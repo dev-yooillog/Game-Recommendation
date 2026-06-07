@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게임 추천 실험 데모</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/tabler-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="logo" href="index.html">
+    <div class="logo-icon">
+      <i class="ti ti-device-gamepad-2" aria-hidden="true"></i>
+    </div>
+    <span class="logo-txt">게임 추천 실험</span>
+  </a>
+  <nav class="nav">
+    <a class="ntab active" href="index.html">추천 데모</a>
+    <a class="ntab" href="#">EDA</a>
+    <a class="ntab" href="#">A/B 결과</a>
+  </nav>
+  <div class="topbar-right">
+    <div class="kpi-strip">
+      <span class="kpi-item">
+        <i class="ti ti-trending-up" aria-hidden="true"></i>CVR +38.8%
+      </span>
+      <div class="kpi-sep"></div>
+      <span class="kpi-item">
+        <i class="ti ti-coin" aria-hidden="true"></i>ARPU +22.4%
+      </span>
+      <div class="kpi-sep"></div>
+      <span class="kpi-item">p &lt; 0.0001</span>
+    </div>
+    <button class="run-btn" id="run-btn">
+      <i class="ti ti-player-play" style="font-size:13px" aria-hidden="true"></i>
+      실행
+    </button>
+  </div>
+</header>
+
+<main class="body">
+
+  <section class="ctrl-section">
+    <div class="ctrl-row">
+      <div class="ctrl-item">
+        <span class="ctrl-label">선호 장르</span>
+        <select id="genre-sel">
+          <option value="">전체</option>
+          <option value="Role-Playing">Role-Playing</option>
+          <option value="Action">Action</option>
+          <option value="Shooter">Shooter</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Sports">Sports</option>
+          <option value="Platform">Platform</option>
+          <option value="Fighting">Fighting</option>
+          <option value="Racing">Racing</option>
+        </select>
+      </div>
+      <div class="ctrl-item">
+        <span class="ctrl-label">보유 플랫폼</span>
+        <select id="platform-sel">
+          <option value="">전체</option>
+          <option value="PlayStation 5">PlayStation 5</option>
+          <option value="Xbox One">Xbox One</option>
+          <option value="Nintendo Switch">Nintendo Switch</option>
+          <option value="PC">PC</option>
+        </select>
+      </div>
+      <div class="ctrl-item">
+        <span class="ctrl-label">추천 방식</span>
+        <div class="mode-group">
+          <button class="mbtn active" data-mode="personalized">개인화</button>
+          <button class="mbtn" data-mode="popular">인기순</button>
+        </div>
+      </div>
+    </div>
+    <div class="inject-row" id="inject-row">
+      <span class="inject-label">
+        <i class="ti ti-diamond" aria-hidden="true"></i>숨겨진 보석 비율
+      </span>
+      <input type="range" id="inject-slider" min="0" max="30" step="5" value="10">
+      <span class="inject-val" id="inject-val">10%</span>
+      <span class="inject-hint">Metacritic 80+ · 판매량 5M 미만</span>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div class="search-wrap">
+      <i class="ti ti-search" aria-hidden="true"></i>
+      <input class="search-inp" id="search" type="text" placeholder="타이틀 검색...">
+    </div>
+    <div class="sort-group">
+      <button class="sbtn active" data-sort="composite">종합점수</button>
+      <button class="sbtn" data-sort="metacritic">Metacritic</button>
+      <button class="sbtn" data-sort="sales">판매량</button>
+    </div>
+  </div>
+
+  <div class="results-bar">
+    <span class="results-count" id="results-count"></span>
+    <div class="gem-pill" id="gem-pill" style="display:none">
+      <i class="ti ti-diamond" aria-hidden="true"></i>
+      <span id="gem-pill-txt"></span>
+    </div>
+  </div>
+
+  <div class="card-list" id="card-list"></div>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
